@@ -1,15 +1,16 @@
-package service;
+package service.DAO;
 
 import model.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import service.HibernateGeneric;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDBCCustomerDAO extends JDBCGeneric implements GenericDAO<Customer, Integer>{
+public class HibernateCustomerDAO extends HibernateGeneric implements GenericDAO<Customer, Integer>{
 
-    public JDBCCustomerDAO() {
+    public HibernateCustomerDAO() {
     }
 
     @Override

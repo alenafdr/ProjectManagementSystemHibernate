@@ -1,15 +1,16 @@
-package service;
+package service.DAO;
 
 import model.Company;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import service.HibernateGeneric;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDBCCompanyDAO extends JDBCGeneric implements GenericDAO<Company, Integer>{
+public class HibernateCompanyDAO extends HibernateGeneric implements GenericDAO<Company, Integer>{
 
-    public JDBCCompanyDAO(){
+    public HibernateCompanyDAO(){
     }
 
     @Override

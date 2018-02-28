@@ -1,11 +1,12 @@
 package service;
 
 import model.Project;
+import service.DAO.HibernateProjectDAO;
 
 import java.util.List;
 
 public class ProjectService implements GenericService<Project, Integer> {
-    JDBCProjectDAO jdbcProjectDAO = new JDBCProjectDAO();
+    HibernateProjectDAO jdbcProjectDAO = new HibernateProjectDAO();
 
     @Override
     public boolean save(Project project) {

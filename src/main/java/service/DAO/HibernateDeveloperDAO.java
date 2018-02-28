@@ -1,25 +1,26 @@
-package service;
+package service.DAO;
 
-import model.Project;
+import model.Developer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import service.HibernateGeneric;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDBCProjectDAO extends JDBCGeneric implements GenericDAO<Project, Integer>{
+public class HibernateDeveloperDAO extends HibernateGeneric implements GenericDAO<Developer, Integer> {
 
-    public JDBCProjectDAO() {
+    public HibernateDeveloperDAO() {
     }
 
     @Override
-    public boolean save(Project project){
+    public boolean save(Developer developer){
         boolean result = false;
         Session session = getSessionFactory().openSession();
         Transaction transaction = null;
         transaction = session.beginTransaction();
         try {
-            session.save(project);
+            session.save(developer);
             transaction.commit();
             result = true;
         } catch (Exception e) {
@@ -30,25 +31,25 @@ public class JDBCProjectDAO extends JDBCGeneric implements GenericDAO<Project, I
     }
 
     @Override
-    public Project getById(Integer id){
-        Project result = null;
+    public Developer getById(Integer id){
+        Developer result = null;
         Session session = getSessionFactory().openSession();
         Transaction transaction = null;
         transaction = session.beginTransaction();
-        result = (Project) session.get(Project.class, id);
+        result = (Developer) session.get(Developer.class, id);
         transaction.commit();
         session.close();
         return result;
     }
 
     @Override
-    public List<Project> getAll(){
-        List<Project> result = new ArrayList<>();
+    public List<Developer> getAll(){
+        List<Developer> result = new ArrayList<>();
         Session session = getSessionFactory().openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        result = (List<Project>) session.createQuery("FROM Project").list();
+        result = (List<Developer>) session.createQuery("FROM Developer").list();
 
         transaction.commit();
         session.close();
@@ -56,17 +57,17 @@ public class JDBCProjectDAO extends JDBCGeneric implements GenericDAO<Project, I
     }
 
     @Override
-    public boolean update(Integer id, Project project){
+    public boolean update(Integer id, Developer developer){
         boolean result = false;
         Session session = getSessionFactory().openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
         try {
-            Project newProject = (Project) session.get(Project.class, id);
-            newProject.setName(project.getName());
-            newProject.setDevelopers(project.getDevelopers());
-            session.update(newProject);
+            Developer newDeveloper = (Developer) session.get(Developer.class, id);
+            newDeveloper.setName(developer.getName());
+            newDeveloper.setSkills(developer.getSkills());
+            session.update(newDeveloper);
             transaction.commit();
             result = true;
         } catch (Exception e) {
@@ -78,15 +79,15 @@ public class JDBCProjectDAO extends JDBCGeneric implements GenericDAO<Project, I
     }
 
     @Override
-    public boolean remove(Project project){
+    public boolean remove(Developer developer){
         boolean result = false;
         Session session = getSessionFactory().openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
         try {
-            Project newProject = (Project) session.get(Project.class, project.getId());
-            session.delete(newProject);
+            Developer newDeveloper = (Developer) session.get(Developer.class, developer.getId());
+            session.delete(newDeveloper);
             transaction.commit();
             result = true;
         } catch (Exception e) {

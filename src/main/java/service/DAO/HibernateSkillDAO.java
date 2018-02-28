@@ -1,20 +1,15 @@
-package service;
+package service.DAO;
 
 
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import model.Developer;
 import model.Skill;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import view.ConsoleHelper;
+import service.HibernateGeneric;
 
-import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class JDBCSkillDAO extends JDBCGeneric implements GenericDAO<Skill, Integer>{
+public class HibernateSkillDAO extends HibernateGeneric implements GenericDAO<Skill, Integer>{
 
     @Override
     public boolean save(Skill skill){

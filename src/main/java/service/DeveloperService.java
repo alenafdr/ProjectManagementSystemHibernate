@@ -1,15 +1,13 @@
 package service;
 
 import model.Developer;
-import model.Skill;
+import service.DAO.HibernateDeveloperDAO;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 public class DeveloperService implements GenericService<Developer, Integer> {
 
-    JDBCDeveloperDAO jdbcDeveloperDAO = new JDBCDeveloperDAO();
+    HibernateDeveloperDAO jdbcDeveloperDAO = new HibernateDeveloperDAO();
 
     @Override
     public boolean save(Developer developer) {

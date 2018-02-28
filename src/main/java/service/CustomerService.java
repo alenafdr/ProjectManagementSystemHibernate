@@ -1,13 +1,14 @@
 package service;
 
 import model.Customer;
+import service.DAO.HibernateCustomerDAO;
 
 import java.util.List;
 
 public class CustomerService implements GenericService<Customer, Integer> {
-    JDBCCustomerDAO jdbcCustomerDAO;
+    HibernateCustomerDAO jdbcCustomerDAO;
     public CustomerService() {
-        jdbcCustomerDAO = new JDBCCustomerDAO();
+        jdbcCustomerDAO = new HibernateCustomerDAO();
     }
 
     @Override

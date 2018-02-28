@@ -1,11 +1,12 @@
 package service;
 
 import model.Skill;
+import service.DAO.HibernateSkillDAO;
 
 import java.util.List;
 
 public class SkillService implements GenericService<Skill, Integer> {
-    private JDBCSkillDAO jdbcSkillDAO = new JDBCSkillDAO();
+    private HibernateSkillDAO jdbcSkillDAO = new HibernateSkillDAO();
 
     @Override
     public boolean save(Skill skill) {

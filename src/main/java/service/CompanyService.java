@@ -1,12 +1,13 @@
 package service;
 
 import model.Company;
+import service.DAO.HibernateCompanyDAO;
 
 import java.util.List;
 
 public class CompanyService implements GenericService<Company, Integer> {
 
-    JDBCCompanyDAO jdbcCompanyDAO = new JDBCCompanyDAO();
+    HibernateCompanyDAO jdbcCompanyDAO = new HibernateCompanyDAO();
 
     @Override
     public boolean save(Company company) {
